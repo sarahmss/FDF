@@ -6,19 +6,13 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 09:10:58 by smodesto          #+#    #+#             */
-/*   Updated: 2021/06/01 11:01:03 by smodesto         ###   ########.fr       */
+/*   Updated: 2021/09/10 19:40:29 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_strsep(char *dest, char *src, char c)
-{
-	while (*src && *src != c)
-		*dest++ = *src++;
-}
-
-static void	free_matrix(char **matrix)
+void	free_matrix(char **matrix)
 {
 	int	i;
 
@@ -29,6 +23,12 @@ static void	free_matrix(char **matrix)
 		i++;
 	}
 	free(matrix);
+}
+
+static void	ft_strsep(char *dest, char *src, char c)
+{
+	while (*src && *src != c)
+		*dest++ = *src++;
 }
 
 char	**make_splitted(char **splitted_str, char sep, t_positions pos)

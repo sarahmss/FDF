@@ -6,7 +6,7 @@
 #    By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/11 17:02:33 by smodesto          #+#    #+#              #
-#    Updated: 2021/08/11 21:48:50 by smodesto         ###   ########.fr        #
+#    Updated: 2021/09/12 22:35:37 by smodesto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,24 +20,31 @@ SRC_PATH		= ./source/
 INCLUDES_PATH	= ./includes/
 OBJS_PATH		= ./objects/
 
-SRCS_FILES =	main.c			\
-				using_mxl.c
+SRCS_FILES =	main.c		\
+				draw.c		\
+				img.c		\
+				events.c	\
+				menu.c		\
+				init.c		\
+				controls.c	\
+				file_handling.c
+
 SRCS = $(addprefix $(SRC_PATH), $(SRCS_FILES))
 
 OBJS_FILES	= $(patsubst %.c, %.o, $(SRCS_FILES))
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_FILES))
 
-HEADER_FILES	=	fdf.h
+HEADER_FILES	=	fdf.h	\
+					structs.h
 HEADERS = $(addprefix $(INCLUDES_PATH), $(HEADER_FILES))
 
 CC			= gcc
-FLAGS		= -Wall -Werror -Wextra
-LIBRARIES	= -L$(LIBFT_PATH) -L$(MLX_PATH) -lmlx -lXext -lX11 -lft
+FLAGS		= -Wall -Wextra  -g
+LIBRARIES	= -L$(LIBFT_PATH) -L$(MLX_PATH) -lmlx -lXext -lX11 -lft -lm
 INCLUDES	= -I$(INCLUDES_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
 
 all:		$(NAME)
 
-#para que os objetos estão sendo usados?
 $(NAME):	$(OBJS) $(LIBFT) $(MLX)
 			$(CC) $(OBJS) $(FLAGS) $(LIBRARIES) $(INCLUDES)  -o $(NAME)
 

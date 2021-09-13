@@ -1,5 +1,6 @@
 # define function to be compiled
 SRCS	=	ft_bzero.c		\
+		ft_free_array.c		\
 		ft_atoi.c			\
 		ft_isalnum.c		\
 		ft_isalpha.c		\
@@ -12,6 +13,7 @@ SRCS	=	ft_bzero.c		\
 		ft_memccpy.c		\
 		ft_memmove.c		\
 		ft_memset.c			\
+		ft_memalloc.c		\
 		ft_strchr.c			\
 		ft_strdup.c			\
 		ft_strlcat.c		\
@@ -40,6 +42,12 @@ SRCS	=	ft_bzero.c		\
 		ft_intlen.c			\
 		ft_itoa_bases.c		\
 		ft_strchr2.c		\
+		ft_strnew.c			\
+		ft_strncpy.c		\
+		ft_atoi_base.c		\
+		ft_max_mod_min.c	\
+		ft_printf_simple.c	\
+		get_next_line_fl.c
 
 SRCS_B = ft_lstnew.c		\
 		ft_lstadd_front.c	\
@@ -58,7 +66,7 @@ OBJ_B =		$(SRCS_B:%.c=%.o)
 
 NAME	=	libft.a
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 CC		=	gcc
 

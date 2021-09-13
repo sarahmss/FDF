@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/13 10:07:57 by smodesto          #+#    #+#             */
+/*   Updated: 2021/09/13 10:08:43 by smodesto         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -5,6 +17,19 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <sys/fcntl.h>
+# include "get_next_line_fl.h"
+
+//printf
+typedef struct s_format
+{
+	va_list	args;
+	char	*temp;
+	int		printed;
+}			t_format;
 
 typedef struct s_positions
 {
@@ -29,7 +54,15 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int		ft_printf(const char *format, ...);
+
+void	free_matrix(char **matrix);
+
+void	*ft_memalloc(size_t size);
+
 int		ft_atoi(const char *str);
+
+int		ft_atoi_base(const char *str, int str_base);
 
 void	ft_bzero(void *mem, size_t n_bytes);
 
@@ -111,11 +144,11 @@ t_list	*ft_lstlast(t_list *lst);
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
-void	ft_lstdelone(t_list *lst, void(*del)(void*));
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
 
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 
-void	ft_lstiter(t_list *lst, void(*f)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *));
 
@@ -130,5 +163,13 @@ int		ft_numblen(long numb, int base);
 char	*ft_itoa_bases(long long int value, int base, char x);
 
 char	*ft_strchr2(const char *str, int c, int c2);
+
+void	free_array(void **matrix);
+
+float	mod(float a);
+
+float	max(float a, float b);
+
+float	min(float a, float b);
 
 #endif
