@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 10:07:57 by smodesto          #+#    #+#             */
-/*   Updated: 2021/09/13 10:08:43 by smodesto         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:53:10 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/fcntl.h>
-# include "get_next_line_fl.h"
 
 //printf
 typedef struct s_format
@@ -53,6 +52,10 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+int		get_next_line(int fd, char **line);
+
+void	ft_free_g(char **s_list);
 
 int		ft_printf(const char *format, ...);
 
@@ -164,7 +167,7 @@ char	*ft_itoa_bases(long long int value, int base, char x);
 
 char	*ft_strchr2(const char *str, int c, int c2);
 
-void	free_array(void **matrix);
+void	free_array(void **matrix, int i);
 
 float	mod(float a);
 

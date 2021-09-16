@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 20:45:09 by smodesto          #+#    #+#             */
-/*   Updated: 2021/09/13 13:12:13 by smodesto         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:52:01 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static void	alloc(t_fdf *mlx)
 	int	i;
 
 	i = 0;
-	mlx->z_matrix = (int **) malloc(sizeof(int *) * (mlx->height + 1));
-	mlx->hex_color = (int **)malloc(sizeof(int *) * (mlx->height + 1));
+	mlx->z_matrix = (int **) malloc(sizeof(int *) * (mlx->height));
+	mlx->hex_color = (int **)malloc(sizeof(int *) * (mlx->height));
 	if (!(mlx->z_matrix) || !(mlx->hex_color))
 		check_error(1, "ALLOC ERROR");
 	i = 0;
-	while (i <= mlx->height)
+	while (i < mlx->height)
 	{
-		mlx->z_matrix[i] = (int *)malloc(sizeof(int) * (mlx->width + 1));
-		mlx->hex_color[i] = (int *)malloc(sizeof(int) * (mlx->width + 1));
+		mlx->z_matrix[i] = (int *)malloc(sizeof(int) * (mlx->width));
+		mlx->hex_color[i] = (int *)malloc(sizeof(int) * (mlx->width));
 		if (!(mlx->z_matrix[i]) || !(mlx->hex_color[i]))
 			check_error(1, "ALLOC ERROR");
 		i++;
@@ -51,7 +51,7 @@ static void	get_height_width(char *filename, t_fdf *mlx)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		check_error(fd, "Unable to open file.");
-	while (get_next_line_fl(fd, &line))
+	while (get_next_line(fd, &line))
 	{
 		if (mlx->height == 0)
 		{
@@ -61,8 +61,9 @@ static void	get_height_width(char *filename, t_fdf *mlx)
 			free(split_x);
 		}
 		mlx->height++;
-		free(line);
+		ft_free_g(&line);
 	}
+	ft_free_g(&line);
 	close(fd);
 }
 
@@ -104,13 +105,12 @@ void	read_file(char *filename, t_fdf *mlx)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		check_error(fd, "Unable to open mlx.");
-	while (get_next_line_fl(fd, &line))
+	while (get_next_line(fd, &line))
 	{
 		fill_matrix(mlx->z_matrix[i], line, mlx->hex_color[i]);
-		free(line);
+		ft_free_g(&line);
 		i++;
 	}
+	ft_free_g(&line);
 	close(fd);
-	mlx->z_matrix[i] = NULL;
-	mlx->hex_color[i] = NULL;
 }

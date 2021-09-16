@@ -6,14 +6,14 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 08:51:24 by smodesto          #+#    #+#             */
-/*   Updated: 2021/09/13 11:04:50 by smodesto         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:59:30 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# define WIN_WIDTH		1080
+# define WIN_WIDTH		1280
 # define WIN_HEIGHT		600
 # define MENU_WIDTH		200
 

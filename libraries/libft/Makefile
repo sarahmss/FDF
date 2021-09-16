@@ -47,7 +47,9 @@ SRCS	=	ft_bzero.c		\
 		ft_atoi_base.c		\
 		ft_max_mod_min.c	\
 		ft_printf_simple.c	\
-		get_next_line_fl.c
+		get_next_line.c		\
+		get_next_line_utils.c
+
 
 SRCS_B = ft_lstnew.c		\
 		ft_lstadd_front.c	\

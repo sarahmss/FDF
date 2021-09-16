@@ -6,7 +6,7 @@
 /*   By: smodesto <smodesto@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 10:49:09 by smodesto          #+#    #+#             */
-/*   Updated: 2021/09/13 13:04:58 by smodesto         ###   ########.fr       */
+/*   Updated: 2021/09/15 20:10:29 by smodesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,16 @@ void	check_error(int err, char *msg)
 */
 static int	close_window(t_fdf *mlx)
 {
-	free_array((void **)mlx->hex_color);
-	free_array((void **)mlx->z_matrix);
+	free_array((void **)mlx->hex_color, mlx->height);
+	free_array((void **)mlx->z_matrix, mlx->height);
+	mlx_destroy_image(mlx->mlx, mlx->img->img);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->img->camera);
+	free(mlx->img);
+	free(mlx->colors);
+	free(mlx->mlx);
+	free(mlx);
 	exit(0);
 }
 
